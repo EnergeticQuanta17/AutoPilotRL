@@ -1,0 +1,11 @@
+[Solved] From PPO to following Algorithms in stable-baselines3 -->    "A2C",
+                                                        "DDPG",
+                                                        "DQN",
+                                                        "PPO",
+                                                        "SAC",
+                                                        "TD3",
+
+[Check] Continuous action space should be defined differently for each environment?
+
+[Solved ]From CartPole to all environments in OpenAIGym - 1055 pre-made environments
+
