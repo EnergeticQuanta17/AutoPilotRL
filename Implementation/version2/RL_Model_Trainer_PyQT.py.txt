@@ -2,23 +2,23 @@ from random import sample
 from PyQt5.QtCore import QTimer
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QComboBox, QPushButton, QLineEdit
-from MegaDHyperPilotRL import *
+from MegaDHyperPilotRL import 
 
 m = MegaD26()
 
-class MyApp(QWidget):
+class MyApp(QWidget)
 
-    def __init__(self):
+    def __init__(self)
         super().__init__()
         self.initUI()
 
-    def initUI(self):
+    def initUI(self)
         # Create labels
-        algorithm_label = QLabel('Algorithm:', self)
+        algorithm_label = QLabel('Algorithm', self)
         algorithm_label.move(20, 20)
-        environment_label = QLabel('Environment:', self)
+        environment_label = QLabel('Environment', self)
         environment_label.move(20, 60)
-        policy_label = QLabel('Policy:', self)
+        policy_label = QLabel('Policy', self)
         policy_label.move(20, 130)
 
         # Create dropdowns
@@ -64,11 +64,11 @@ class MyApp(QWidget):
 
         
 
-    def refresh_environment(self):
+    def refresh_environment(self)
         # update the environment list with 10 random strings
         self.update_env_list()
 
-    def update_env_list(self):
+    def update_env_list(self)
         # list of environment names
         env_list = all_environments_latest_version
         # select 10 random environment names
@@ -76,12 +76,12 @@ class MyApp(QWidget):
         # clear the current environment dropdown list
         self.environment_dropdown.clear()
         # add the random environment names to the dropdown list
-        for env in self.environments:
+        for env in self.environments
             self.environment_dropdown.addItem(env)
-        # print(f"Selected environments: {self.environments}")
+        # print(fSelected environments {self.environments})
 
-    def submit_selections(self):
-        if(self.textbox.text() not in all_environments_latest_version and self.environment_dropdown.currentText() not in all_environments_latest_version):
+    def submit_selections(self)
+        if(self.textbox.text() not in all_environments_latest_version and self.environment_dropdown.currentText() not in all_environments_latest_version)
             return
         
         input_success = QLabel('Input Success !', self)
@@ -99,19 +99,19 @@ class MyApp(QWidget):
         self.algorithm = self.algorithm_dropdown.currentText()
         self.environment = self.environment_dropdown.currentText()
         self.policy = self.policy_dropdown.currentText()
-        if(self.environment==""):
+        if(self.environment==)
             self.environment = self.textbox.text()
 
-        print('Algorithm selected:', self.algorithm)
-        print('Environment selected:', self.environment)
-        print('Policy selected:', self.policy)
+        print('Algorithm selected', self.algorithm)
+        print('Environment selected', self.environment)
+        print('Policy selected', self.policy)
 
         m.second_init(self.environment, self.algorithm, self.policy)
         m.learn_and_save(100, 10)
         exit()
         m.load(1)
 
-    def reset_gui(self):
+    def reset_gui(self)
         m = MegaD26()
         # Reset values of GUI elements
         self.algorithm_dropdown.setCurrentIndex(0)
@@ -131,7 +131,7 @@ class MyApp(QWidget):
         self.textbox.setDisabled(False)
         self.policy_dropdown.setDisabled(False)
 
-if __name__ == '__main__':
+if __name__ == '__main__'
     app = QApplication(sys.argv)
     ex = MyApp()
     app.exec_()
