@@ -1,0 +1,6 @@
+swig
+tensorboard
+gym[all]
+gym
+stable-baselines3[extra]
+stable-baselines3
