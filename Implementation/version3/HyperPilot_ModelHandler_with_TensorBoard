@@ -43,6 +43,10 @@ class MyApp(QWidget):
         self.exe_button.move(180, 340)
         self.exe_button.clicked.connect(self.execution_submit)
 
+        self.show_logs_button = QPushButton('Show logs on TensorBoard', self)
+        self.show_logs_button.move(180, 340)
+        self.show_logs_button.clicked.connect(self.show_logs)
+
         # Create a text box
         self.textbox = QLineEdit(self)
         self.textbox.move(100, 90)
@@ -135,22 +139,20 @@ class MyApp(QWidget):
         model_dir = f"model/{self.m.env_name}/{self.m.algorithm}"
         for i in os.listdir(f"{model_dir}/{self.loader_dropdown.currentText()}"):
             self.model_dropdown.addItem(i)
+
+    def show_logs(self):
+        pass
                 
 
     def loader(self):
-        self.reset_load_dropdowns()
+        print("before   ")
         self.m = MegaD26(False)
         self.m.third_init()
+        print("after")
         loading_pressed = False
         for i in os.listdir("model"):
             self.load_env_dropdown.addItem(i)
         print("after")
-
-    def reset_load_dropdowns(self):
-        self.load_env_dropdown.clear()
-        self.load_algo_dropdown.clear()
-        self.loader_dropdown.clear()
-        self.model_dropdown.clear()
         
     def refresh_environment(self):
         # update the environment list with 10 random strings

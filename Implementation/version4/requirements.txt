@@ -1,6 +1,11 @@
+tensorflow
+optuna
 swig
 tensorboard
 gym[all]
 gym
 stable-baselines3[extra]
 stable-baselines3
+scikit-learn
+hyperopt
+tune

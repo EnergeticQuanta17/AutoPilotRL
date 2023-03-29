@@ -160,23 +160,23 @@ class MegaD26:
         if(not os.path.exists(logdir)):
             os.makedirs(logdir)
 
-    def create_model_given_algorithm(self, algo, policy, env, v, tbl):
+    def create_model_given_algorithm(self, algo, policy, env, v, tbl, n_steps):
         print(algo)
         if(algo == "PPO"):
-            return PPO(policy, env, verbose=v, tensorboard_log=tbl)
+            return PPO(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
         elif(algo == "A2C"):
-            return A2C(policy, env, verbose=v, tensorboard_log=tbl)
+            return A2C(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
         elif(algo == "DQN"):
-            return DQN(policy, env, verbose=v, tensorboard_log=tbl)
+            return DQN(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
         elif(algo == "DDPG"):
             env.action_space = gym.spaces.Box(low=-2.0, high=2.0, shape=(1,))
-            return DDPG(policy, env, verbose=v, tensorboard_log=tbl)
+            return DDPG(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
         elif(algo == "SAC"):
             env.action_space = gym.spaces.Box(low=-2.0, high=2.0, shape=(1,))
-            return SAC(policy, env, verbose=v, tensorboard_log=tbl)
+            return SAC(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
         elif(algo == "TD3"):
             env.action_space = gym.spaces.Box(low=-2.0, high=2.0, shape=(1,))
-            return TD3(policy, env, verbose=v, tensorboard_log=tbl)
+            return TD3(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
     
     def create_model_from_PPO_hyperparameters(self, hyperparameters):
         return PPO(**hyperparameters)
@@ -189,7 +189,7 @@ class MegaD26:
         self.make_directories(model_dir, logdir)
 
         print(self.algorithm)
-        model = self.create_model_given_algorithm(algo=self.algorithm, policy=self.policy, env=self.env, v=1, tbl=logdir+"//")
+        model = self.create_model_given_algorithm(algo=self.algorithm, policy=self.policy, env=self.env, v=1, tbl=logdir+"//", n_steps=10)
         
         # hyps = PPO_HypConfig.request_next_HypConfig()
         # model = self.create_model_from_PPO_hyperparameters(hyps)
