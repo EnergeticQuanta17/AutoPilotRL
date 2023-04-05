@@ -1,0 +1,9 @@
+[Done] How to handle different pruners and samplers? --> make folders ?
+
+2. study's name should come from json just like version 1
+
+3. Empty folder creation
+
+4. Analyze the graphs between differnt samplers and pruners
+
+5. 
