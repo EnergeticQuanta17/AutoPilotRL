@@ -1,1 +1,0 @@
-{"env_name": "BipedalWalker-v3", "algo": "A2C", "optimizer": "optuna", "timesteps": 100, "iterations": 10, "n_trials": 10, "counter": 15, "sampler": "RandomSampler", "pruner": "ThresholdPruner"}
