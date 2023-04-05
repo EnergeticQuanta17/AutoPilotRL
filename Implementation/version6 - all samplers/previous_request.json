@@ -1,1 +1,1 @@
-{"env": "RoadRunner-v0", "algo": "PPO", "policy": "MlpPolicy", "counter": 2}
+{"env": "RoadRunner-v0", "algo": "PPO", "policy": "MlpPolicy", "counter": 4}
