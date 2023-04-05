@@ -268,6 +268,10 @@ class HyperPilotRL:
         if(self.optimizer == "optuna"):
             self.o.visul()
 
+    def get_study_data(self):
+        if(self.optimizer == "optuna"):
+            return self.o.return_study()
+
 if(__name__=="__main__"):
     data = {}
     with open("previous_request.json", "r") as f:
@@ -314,3 +318,5 @@ if(__name__=="__main__"):
     h.hyp_search()
     h.summary()
     h.visualization()
+    h.get_study_data()
+    
