@@ -1,0 +1,4 @@
+1. SenderClass to send information from runner_trainer.py
+2. MainWindow class to handle the PyQt5 window
+3. Given input variable, its domain --> make an appropriate dropdown-box, or numbers box
+4. The sender class must analyze the functions and automatically create buttons
