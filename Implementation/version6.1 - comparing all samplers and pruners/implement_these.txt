@@ -1,0 +1,6 @@
+[Done] Store in a json the following details also
+    'study_name' with the settings used(e.g. sampler)
+
+2. Store reasons(Exception name) why it didnt work
+
+3. [Bug] 1 , 2 , 3 , 4 , ... times "A new study created in RDB with name: study-128"

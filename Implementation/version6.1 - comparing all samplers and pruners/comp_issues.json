@@ -1,0 +1,1 @@
+[{"Configuration": {"env_name": "CartPole-v1", "algo": "PPO", "optimizer": "optuna", "timesteps": 1000, "iterations": 10, "n_trials": 2, "counter": 16, "sampler": "GridSampler", "pruner": "HyperbandPruner", "study_name": "study-16", "study_directory": "optuna/16/CartPole-v1/PPO/GridSampler/HyperbandPruner"}, "Exception": 
