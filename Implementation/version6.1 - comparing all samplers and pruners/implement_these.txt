@@ -3,4 +3,4 @@
 
 2. Store reasons(Exception name) why it didnt work
 
-3. [Bug] 1 , 2 , 3 , 4 , ... times "A new study created in RDB with name: study-128"
+[Solved inside library] [Bug] Printing logger n number of times while creating the n-th study

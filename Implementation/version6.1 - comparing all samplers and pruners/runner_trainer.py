@@ -24,7 +24,7 @@ domain = {
     "env_name" : [env_name.id for env_name in gym.envs.registry.all()],
     "algo" : ["A2C", "DDPG", "DQN", "PPO", "SAC", "TD3"],
     "optimizer": ["optuna"],
-    "sampler": ["BruteForceSampler", "CmaEsSampler", "GridSampler", "PartialFixedSampler", "QMCSampler", "RandomSampler", "MOTPESampler", "TPESampler", "NSGAIISampler"],
+    "sampler": ["TPESampler", "RandomSampler", "GridSampler", "PartialFixedSampler", "QMCSampler", "CmaEsSampler", "MOTPESampler", "BruteForceSampler", "NSGAIISampler"],
     "pruner": ["HyperbandPruner", "MedianPruner", "NoPruner", "PatientPruner", "PercentilePruner", "SuccessiveHalvingPruner", "ThresholdPruner"],
 }
 
@@ -163,7 +163,7 @@ class OptunaTuner:
             selected_sampler = self.select_sampler()
         
         lie = storage_name is not None
-        print("---------------------------------creating study")
+        
         study = optuna.create_study(
                 storage=storage_name,
                 sampler=selected_sampler,
@@ -273,10 +273,8 @@ class HyperPilotRL:
             return self.o.return_study()
 
     def check_validity(self):
-        print("-------------get")
         if(self.optimizer == "optuna"):
-            _ = self.o.return_study()
-            print("ran successfully")
+            self.o.return_study()
 
 if(__name__=="__main__"):
     with open("study_data.json", "w") as f:
@@ -318,25 +316,21 @@ if(__name__=="__main__"):
                 # print(data)
 
                 try:
+                    print(data)
                     h = HyperPilotRL(
                         **data
                     )
-                    h.check_validity()
+                    h.hyp_search()
                     with open("study_data.json", "a") as f:
                         json.dump(data, f)
-                        print("worked")
+                    print("\n\n\n\n\n")
                     del h
                 except Exception as e:
-                    print(data)
-                    comp_issues.append({
-                        "Configuration": data,
-                        "Exception": e
-                    })
-                    print(dict(comp_issues), dict(comp_issues[0]))
-                    with open("comp_issues.json", "w") as f:
-                        json.dump(comp_issues, f)
-                    print("This configuration has compatibility issues!\n")
-                    exit()
+                    data_with_issue = data.copy()
+                    data_with_issue['Exception'] = str(e)
+                    comp_issues.append(data_with_issue)
+                    # print(data)
+                    # print("This configuration has compatibility issues!\n")
         with open("previous_request.json", "w") as f:
             json.dump(data, f)
         

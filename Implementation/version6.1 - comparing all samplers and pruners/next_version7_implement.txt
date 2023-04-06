@@ -1,4 +1,4 @@
-1. This version fully focus on Plotly - Nice graphs
+1. Automating PyQt5
 2. 
 3. 
 4. 

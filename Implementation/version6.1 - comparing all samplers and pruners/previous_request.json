@@ -1,1 +1,0 @@
-{"env_name": "CartPole-v1", "algo": "PPO", "optimizer": "optuna", "timesteps": 1000, "iterations": 10, "n_trials": 2, "counter": 0, "sampler": "TPESampler", "pruner": "MedianPruner"}
