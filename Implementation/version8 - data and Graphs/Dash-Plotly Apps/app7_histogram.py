@@ -8,6 +8,7 @@ import plotly.express as px
 import pandas as pd
 
 import optuna
+import urllib
 
 engine = pyttsx3.init()
 rate = engine.getProperty('rate')
@@ -16,8 +17,6 @@ engine.setProperty('rate', rate-30)
 def speak(text):
     engine.say(text)
     engine.runAndWait()
-
-import urllib
 
 def study_loader():
     study_name = "study-26"
@@ -34,7 +33,6 @@ def study_loader():
     )
 
     return study
-
 
 study = study_loader()
 
@@ -55,6 +53,9 @@ def preprocess_df(study, normalize=True):
 trials_df = preprocess_df(study, False)
 
 app = Dash(__name__)
+print(trials_df.columns.to_list())
+
+import plotly.express as px
 
 app.layout = html.Div([
     html.H1('Comparing effectiveness of trials'),
@@ -63,24 +64,21 @@ app.layout = html.Div([
     dcc.Graph(id='graph-content'),
     html.H2('The above graph can be used to see relationship between sampled Hyperpamameter Values and Reward Score'),
     html.Br(), html.Br(), html.Br(), html.Br(), 
-    dash_table.DataTable(data=trials_df.to_dict('records'), page_size=5, style_table={'width': 'auto'})
+    dash_table.DataTable(data=trials_df.to_dict('records'), page_size=10, style_table={'width': 'auto'})
 ])
 
-@callback(
+@app.callback(
     Output('graph-content', 'figure'),
     Input('dropdown-selection', 'value')
 )
 def update_graph(value):
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(x=trials_df.index, y=trials_df[value], mode='markers', name=f"{value}"))
-    fig.add_trace(go.Scatter(x=trials_df.index, y=trials_df['value'], mode='markers', name='reward', marker=dict(color='red')))
-    fig.add_trace(go.Scatter(x=trials_df.index, y=trials_df[value], mode='lines', name=f'Line {value}'))
-    fig.add_trace(go.Scatter(x=trials_df.index, y=trials_df['value'], mode='lines', name='Reward Line', marker=dict(color='red')))
-    fig.update_layout(title=f'Comparing {value} and reward', xaxis=dict(title='Trial Number'), yaxis=dict(title=value))
+    fig = px.histogram(trials_df, x='number', y=f'{value}', nbins=30)
+    fig.update_layout(title=f'Comparing Trial Number and {value}', xaxis=dict(title=value), yaxis=dict(title='Reward'))
     return fig
 
 winsound.Beep(440, 500)
 speak('Dash App Updated !')
 
+# Run the app
 if __name__ == '__main__':
     app.run_server(debug=True)
