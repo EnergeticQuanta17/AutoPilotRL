@@ -1,0 +1,12 @@
+remove.py removes 
+    The dynamically created folders and files in the current directory
+
+
+Go to site-packages\optuna\storage\_rdb\storage.py 
+    280th line add this
+        print("A new study created in RDB with name: {}".format(study_name))
+    
+    281th line modify to
+        _logger.debug("A new study created in RDB with name: {}".format(study_name))
+
+

@@ -1,0 +1,6 @@
+[Done] Store in a json the following details also
+    'study_name' with the settings used(e.g. sampler)
+
+2. Store reasons(Exception name) why it didnt work
+
+[Solved inside library] [Bug] Printing logger n number of times while creating the n-th study
