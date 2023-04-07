@@ -10,3 +10,5 @@ Go to site-packages\optuna\storage\_rdb\storage.py
         _logger.debug("A new study created in RDB with name: {}".format(study_name))
 
 
+Line22 of Version8 / Plotly-Dash / App6
+	Change it to the study to be analyzed
