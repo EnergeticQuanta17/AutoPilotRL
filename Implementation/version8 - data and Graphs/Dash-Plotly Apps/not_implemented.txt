@@ -1,0 +1,27 @@
+1. Size of the point according to an attribute and different colors for another attribute and the usual x and y axis
+    fig = px.scatter(df, x="gdp per capita", y="life expectancy",
+                 size="population", color="continent", hover_name="country",
+                 log_x=True, size_max=60)
+    
+    With slider --> this lags if current computational power is less
+
+2. Can use dictionaries to do inline HTML
+    colors = {
+        'background': '#111111',
+        'text': '#7FDBFF'
+    }
+
+    fig.update_layout(
+        plot_bgcolor=colors['background'],
+        paper_bgcolor=colors['background'],
+        font_color=colors['text']
+    )
+
+3.  Multi-Select Dropdown
+    Checkboxes
+    Text Input
+    Slider
+
+    https://dash.plotly.com/layout
+
+4. 
