@@ -36,4 +36,16 @@
             State('input-2-state', 'value'))
     )
 
-7. 
+7. Interactive Visualizations
+    Hover Data
+    Click Data
+    Selection Data
+    Zoom and Relayout Data
+
+8. Update graphs on Hover
+    Hovering over points on one graph changes the plot of other graph/graphs
+    Example also has "Year" slider
+    
+9. 
+
+10.

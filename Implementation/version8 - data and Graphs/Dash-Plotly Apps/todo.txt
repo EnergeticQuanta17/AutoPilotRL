@@ -1,6 +1,6 @@
 1. Learning curve plotting
 
-2.
+2. Convert all  the demo files to "study" related.
 
 3. 
 
