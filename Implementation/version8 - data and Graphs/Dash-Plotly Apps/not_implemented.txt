@@ -49,4 +49,55 @@
 9. Generic Crossfilter Recipe
     2nd way to Visualize high dimensional data apart from parallel-coordinates
 
-10. 
+10. Dash can handle multi-user environment
+    gunicorn --workers 4 app:server
+
+11. https://dash.plotly.com/sharing-data-between-callbacks
+
+12. Storing data in the Browser, User Based Session Data
+13. Displaying Errors with dash.no_update
+14. Determining which Input Has Fired with dash.callback_context
+
+15. Improving Performance with Memoization
+    import time
+    import functools32
+
+    @functools32.lru_cache(maxsize=32)
+    def slow_function(input):
+        time.sleep(10)
+        return 'Input was {}'.format(input)
+
+16. As an Indirect Result of User Interaction
+17. Prevent Callback Execution Upon Initial Component Render
+18. Circular Callbacks == OMG THIS IS SOOO COOOL
+
+19. Number Input
+    dcc.Input(
+        id="celsius",
+        value=0.0,
+        type="number"
+    ),
+
+20. Synchronizing Two Checklists - Synchronizing with "All" button
+
+
+
+
+
+
+
+
+
+
+
+
+21. CONTINUE READING FROM https://dash.plotly.com/clientside-callbacks
+22. 
+23. 
+24. 
+25. 
+26. 
+27. 
+28. 
+29. 
+30. 
