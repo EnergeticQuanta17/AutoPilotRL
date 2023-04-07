@@ -2,7 +2,7 @@
 
 2. Convert all  the demo files to "study" related.
 
-3. 
+3. Plot Distributions of each of the Hyperparameter Distribution - overlapping
 
 4.
 
