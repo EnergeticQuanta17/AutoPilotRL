@@ -16,10 +16,17 @@ engine.setProperty('rate', rate-30)
 def speak(text):
     engine.say(text)
     engine.runAndWait()
+import optuna
+import urllib
 
 def study_loader():
     study_name = "study-26"
-    storage_name = f"sqlite:///C:/Users/mpree/Downloads/{study_name}.db"
+    url = "https://raw.githubusercontent.com/SBhat2615/AutoPilotRL/main/Implementation/version8%20-%20data%20and%20Graphs/study-26.db"
+    storage_name = f"sqlite:///{study_name}.db"
+
+    with urllib.request.urlopen(url) as response:
+        with open(study_name + ".db", 'wb') as f:
+            f.write(response.read())
 
     study = optuna.load_study(
         study_name=study_name,
@@ -27,6 +34,7 @@ def study_loader():
     )
 
     return study
+
 
 study = study_loader()
 
