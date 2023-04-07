@@ -1,0 +1,106 @@
+Dash Core Components
+    Dropdown
+    Slider
+    RangeSlider
+    Input - like "number"
+    Textarea
+    Checkboxes
+    Radio Items
+    Button
+    DatePickerSingle
+    DatePickerRange
+    Markdown
+    Upload Component
+    Download Component
+    Tabs
+    Graphs
+    ConfirmDialog
+    Store
+    Loading Component
+    Location
+
+Dash DataTable
+    Table with Click Callback - amazing
+    Styling
+    Conditional Formatting
+    Number Formatting
+    Sorting, Filtering, Selecting, and Paging Natively
+    DataTable Tooltips
+    Python-Driven Filtering, Paging, Sorting
+    Editable DataTable
+    Typing and User Input Processing
+    Dropdowns Inside DataTable
+    Virtualization
+    Filtering Syntax
+
+Dash DAQ
+    BooleanSwitch
+    ColorPicker
+    Gauge
+    GraduatedBar
+    Indicator
+    Joystick
+    Knob
+    LEDDisplay
+    NumericInput
+    PowerButton
+    PrecisionInput
+    Slider
+    StopButton
+    Tank
+    Thermometer
+    ToggleSwitch
+    DarkThemeProvider !!!
+
+Image Annotations with Dash
+    Annotation Tools in Plotly Figures
+    Dash Callback Triggered When Drawing Annotations  - selected Location
+    Changing The Style of Annotations
+    Extracting an Image Subregion Defined By an Annotation - Drag a rectangle to show the histogram of the ROI - amazing - Draw a path to show the histogram of the ROI - even more amazing
+    Modifying Shapes and Parsing relayoutData
+    Draw a shape, then modify it.
+
+DashCanvas: a canvas object for annotations
+    Press down the left mouse button and draw inside the canvas
+    Basic callbacks to modify DashCanvas properties
+    Draw on image and press Save to show annotations geometry
+    Annotate the two objects and the background
+    Updating the background image
+
+Dash Slicer
+    Slicer
+    Multiple slicers
+    Anisotropic data
+    Reacting to the slicer state
+    
+Dash Player
+    Playing
+    Loop
+    Controls
+    Muted
+    SeekTo
+    CurrentTime
+    SecondsLoaded
+    Duration
+    Volume
+    PlaybackRate
+    Update Interval for Current Time
+    Update Interval for Seconds Loaded
+    Update Interval for Duration
+
+Dash Cytoscape
+    Dash Cytoscape is a graph visualization component for creating easily customizable, high-performance, interactive, and web-based networks. It extends and renders Cytoscape.js, and offers deep integration with Dash layouts and callbacks, enabling the creation of powerful networks in conjunction with the rich collection of Dash components , as well as established computational biology and network science libraries such as Biopython and networkX.
+
+    Reference
+    Basic Usage & Elements
+    Layouts
+    Styling
+    Callbacks
+    Events and User Interactions
+    Biopython Examples
+    Exporting Images
+    Making responsive graphs
+
+Dash VTK
+    VTK stands for Visualization Toolkit and is a popular library written in C++ which is also available in Python for doing data processing and visualization in the scientific and medical fields. Typically VTK is used to visualize 3D geometries from simulations or sensors such as LIDAR scanner. For the medical world, VTK is used to render 3D images (i.e. CT, MRI, ...) by doing volume rendering and/or slicing.
+
