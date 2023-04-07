@@ -24,4 +24,16 @@
 
     https://dash.plotly.com/layout
 
-4. 
+4. Multi-outputs
+    Just put comma while returning
+
+5. Chained Callbacks
+
+6. Dash App With State
+    @app.callback(Output('output-state', 'children'),
+            Input('submit-button-state', 'n_clicks'),
+            State('input-1-state', 'value'),
+            State('input-2-state', 'value'))
+    )
+
+7. 
