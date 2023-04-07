@@ -80,15 +80,14 @@
 
 20. Synchronizing Two Checklists - Synchronizing with "All" button
 
+21. https://dash-example-index.herokuapp.com/animations
+    Animations with scatter (bigger scatter bubble)
 
+22. helps to use clientside when intervals are very frequent - dcc.Interval
 
+23. https://plotly.com/python/wind-rose-charts/
 
-
-
-
-
-
-
+24. 
 
 
 21. CONTINUE READING FROM https://dash.plotly.com/clientside-callbacks
