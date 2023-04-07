@@ -45,7 +45,8 @@
 8. Update graphs on Hover
     Hovering over points on one graph changes the plot of other graph/graphs
     Example also has "Year" slider
-    
-9. 
 
-10.
+9. Generic Crossfilter Recipe
+    2nd way to Visualize high dimensional data apart from parallel-coordinates
+
+10. 
