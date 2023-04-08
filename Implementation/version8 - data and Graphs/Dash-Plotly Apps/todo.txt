@@ -31,3 +31,8 @@
         return trials_df
 
 8. app21 - Find best fit Distribution and fit it
+
+9. It is very hard to rotate the 3d
+	And when we hover over it, its projection on axes is shown - enhance this 
+
+10.
