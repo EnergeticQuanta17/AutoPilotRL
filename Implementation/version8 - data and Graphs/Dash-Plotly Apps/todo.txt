@@ -15,3 +15,19 @@
     )
 
 6. More complex dsitribions instead of Normal Distribution
+
+7. Change all preprocess_df to this - Done from App21 onwards
+        def preprocess_df(study, normalize=True):
+        trials_df = study.trials_dataframe()
+
+        for i in ['datetime_start', 'datetime_complete', 'state']:
+            trials_df = trials_df.drop(i, axis=1)
+
+        trials_df['duration'] = trials_df['duration'].dt.total_seconds()
+        
+        if(normalize):
+            trials_df = trials_df.apply(lambda x: (x - x.min()) / (x.max() - x.min()))
+
+        return trials_df
+
+8. app21 - Find best fit Distribution and fit it
