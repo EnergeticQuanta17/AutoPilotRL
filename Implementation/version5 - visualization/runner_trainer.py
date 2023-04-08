@@ -142,7 +142,7 @@ class OptunaTuner:
         if(not "_pareto_front.py"): ## this is used for multi-objective study
             pyo.plot(optuna.visualization.plot_pareto_front(study))
         
-        if(not "_param_importances.py"):
+        if("_param_importances.py"):
             pyo.plot(optuna.visualization.plot_param_importances(study))
         
         if(not "_parallel_coordinate.py"):
@@ -170,9 +170,9 @@ class HyperPilotRL:
 
         if(self.optimizer == "optuna"):
             o = OptunaTuner(env_name, algo, self.directory, optimizer, timesteps, iterations, n_trials, counter)
-            # o.call_optuna()
+            o.call_optuna()
             # o.study_summaries()
-            o.visul()
+            # o.visul()
         elif(self.optimizer == "default"):
             pass
 
@@ -193,9 +193,9 @@ if(__name__=="__main__"):
         "PPO",
         "optuna",
         timesteps=1000,
-        iterations=1,
-        n_trials=10,
-        counter=261030
+        iterations=10,
+        n_trials=2,
+        counter=1026
     )
 
     
