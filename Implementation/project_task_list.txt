@@ -1,0 +1,22 @@
+------------------------TO IMPLEMENT------------------------
+
+1. Verison 7 - 
+	PyQt5 vertical space too much
+
+
+2. Version 8 - 
+	Plot graphs to analyze within the trial
+
+
+3. Version 9 - Optuna Dashboard
+
+
+4. Version 10 - Optuna Importance analysis
+
+
+-------------------------TENTATIVE--------------------------
+
+5. Version 11 - Dask distributed
+
+
+6. Version 12 - 
