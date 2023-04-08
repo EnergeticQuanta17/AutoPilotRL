@@ -1,0 +1,4 @@
+chart 1. "Linear fit of hyperparameters" VS "Performance"
+    Use trendline or scikit-learn
+
+chart 2. Make dropdown for each model fitting and plot the corresponing model's graphs
