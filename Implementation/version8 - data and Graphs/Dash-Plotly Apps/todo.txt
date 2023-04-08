@@ -4,6 +4,14 @@
 
 3. Plot Distributions of each of the Hyperparameter Distribution - overlapping
 
-4.
+4. HeatMap
 
-5. 
+5. "bluered" color scale --> fig = px.scatter(
+        df,
+        x="sepal_width",
+        y="sepal_length",
+        color="sepal_length",
+        color_continuous_scale="bluered",
+    )
+
+6. More complex dsitribions instead of Normal Distribution

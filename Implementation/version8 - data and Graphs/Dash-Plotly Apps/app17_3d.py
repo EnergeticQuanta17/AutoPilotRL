@@ -102,6 +102,7 @@ def update_chart(xaxis_column_name, yaxis_column_name, zaxis_column_name):
         z=zaxis_column_name,
         color="value",
         hover_data=trials_df.columns.to_list(),
+        color_continuous_scale="bluered",
     )
     fig.update_layout(width=1400, height=1000)
     return fig

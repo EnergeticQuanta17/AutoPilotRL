@@ -69,7 +69,7 @@ app.layout = html.Div(children=[
     Input('dropdown-selection', 'value')
 )
 def update_graph(value):
-    fig = px.bar(trials_df, x="number", y="value", color=value, barmode="group")
+    fig = px.bar(trials_df, x="number", y="value", color=value, barmode="group",  color_continuous_scale="bluered",)
     return fig
 
 winsound.Beep(440, 500)

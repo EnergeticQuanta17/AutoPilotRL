@@ -52,7 +52,7 @@ def preprocess_df(study, normalize=True):
 
     return trials_df
 
-trials_df = preprocess_df(study, False)
+trials_df = preprocess_df(study, True)
 
 app = Dash(__name__)
 
