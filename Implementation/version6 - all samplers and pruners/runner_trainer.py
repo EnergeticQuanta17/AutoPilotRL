@@ -3,6 +3,7 @@ import plotly.offline as pyo
 import logging
 import sys
 import json
+import time
 
 import optuna
 from sklearn import model_selection
@@ -312,10 +313,16 @@ if(__name__=="__main__"):
     #     pruner="HyperbandPruner"
     # )
 
+    start = time.time()
     h = HyperPilotRL(
         **data
     )
     h.hyp_search()
+
+    print("--------------------------------")
+    print(time.time() - start)
+    print("--------------------------------")
+
     h.summary()
     h.visualization()
     h.get_study_data()
