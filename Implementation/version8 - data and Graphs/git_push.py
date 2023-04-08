@@ -1,6 +1,6 @@
 import subprocess
 
-subprocess.run(["python", "remove.py"])
+# subprocess.run(["python", "remove.py"])
 
 subprocess.run(["git", "add", "."])
 commit_message = input("Enter commit message: ")
