@@ -4,4 +4,4 @@ fig = px.parallel_coordinates(df, color="species_id", labels={"species_id": "Spe
                   "sepal_width": "Sepal Width", "sepal_length": "Sepal Length",
                   "petal_width": "Petal Width", "petal_length": "Petal Length", },
                     color_continuous_scale=px.colors.diverging.Tealrose, color_continuous_midpoint=2)
-fig.write_html('Parallel_Coordiantes_with_color_to_repesent_main_dimension_amazing.html', auto_open=True)
+fig.write_html('Parallel_Coordiantes_with_color_to_repesent_main_dimension.html', auto_open=True)

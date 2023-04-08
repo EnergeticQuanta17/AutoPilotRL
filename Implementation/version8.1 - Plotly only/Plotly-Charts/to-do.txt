@@ -1,4 +1,5 @@
 chart 1. "Linear fit of hyperparameters" VS "Performance"
+    This is for seeing trend of one hyperparameter vs reward
     Use trendline or scikit-learn
 
 chart 2. Make dropdown for each model fitting and plot the corresponing model's graphs
@@ -8,3 +9,78 @@ chart 2. Make dropdown for each model fitting and plot the corresponing model's 
     This is implemneted in Plotly SciKit-Learn
 
 chart 3. 3D regression surface
+
+chart 4. Multiple Linear Regression
+    This is to see trend of multiple-hyperparameters vs reward - using regression
+
+2. Multiple Models - Multiple Linear Regression
+
+3. READ - CROSS-VALIDATION FOLDS
+    https://plotly.com/python/ml-regression/
+
+    [code] Visualize regularization across cross-validation folds
+
+    [code] Grid search visualization using px.density_heatmap and px.box
+
+4. Marginal Plots
+    Plots on each of the axes - which give the marginal distribution of that variable at that point
+
+    marginal_x="histogram"
+    marginal_y="rug"
+    marginal_x="box"
+    marginal_y="violin"
+
+5. TrendLines
+    OLS - trendline="ols"
+    Fitting multiple lines and retrieving the model parameters
+    trendline="ols", trendline_options=dict(log_x=True),
+
+6. Locally WEighted Scatterplot Smoothing (LOWESS)
+    https://plotly.com/python/linear-fits/
+    VERY COOL
+    trendline="lowess", trendline_options=dict(frac=0.1)
+        The second parameter controls the smoothness of the fitting funciton
+
+7. Moving Averages
+    5-point moving Averages
+    https://plotly.com/python/linear-fits/
+    Exponentially-weighted moving average (halflife of 2 points)
+    Expanding mean
+    Rolling Median
+    Expanding Maximum
+
+8. LOOK HERE
+    import plotly.graph_objects as go
+
+    annotation_template = go.layout.Template()
+    annotation_template.layout.annotationdefaults = dict(font=dict(color="crimson"))
+
+    fig = go.Figure()
+    fig.update_layout(
+        template=annotation_template,
+        annotations=[
+            dict(text="Look Here", x=1, y=1),
+            dict(text="Look There", x=2, y=2)
+        ]
+    )
+    fig.show()
+
+9. DRAFT / CONFIDENTIAL on the screen
+    https://plotly.com/python/templates/
+
+10. fig = px.bar(df, x="medal", y="count", color="nation",
+      pattern_shape="nation", pattern_shape_sequence=[".", "x", "+"])
+
+11. FACET Plots 
+    https://plotly.com/python/plotly-express/
+
+12. SCATTER MATRIX - Correlation
+    fig = px.scatter_matrix(df, dimensions=["sepal_width", "sepal_length", "petal_width", "petal_length"], color="species")
+
+13. PARALLEL COORDINATES DIAGRAM
+
+14. PARALLEL CATEGORIES DIAGRAM
+    Hover
+    
+
+15. 
