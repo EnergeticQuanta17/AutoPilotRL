@@ -2,3 +2,9 @@ chart 1. "Linear fit of hyperparameters" VS "Performance"
     Use trendline or scikit-learn
 
 chart 2. Make dropdown for each model fitting and plot the corresponing model's graphs
+    The method used in the example is really good
+
+1. Model Generalization - different from Model Regression
+    This is implemneted in Plotly SciKit-Learn
+
+chart 3. 3D regression surface
