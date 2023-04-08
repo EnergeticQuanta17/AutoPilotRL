@@ -1,0 +1,16 @@
+from MegaDHyperPilotRL import *
+
+m = MegaD26()
+
+enter
+enter
+enter
+
+m.learn_and_save(timestep=100, iterations=10)  ## Create a model after every 100 timsteps, for 10 times
+
+# After training is done
+
+m.load(no_of_episodes=5)   # Number of times the agent shows "how it plays"
+Choose execution number among the given list
+
+Select the model for which you want to see how the agent plays
