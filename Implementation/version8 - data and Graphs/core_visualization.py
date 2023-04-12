@@ -76,6 +76,7 @@ class Visualizer:
         table3 = ColorScaleHistogram(self.trials_df)
         table4 = InterCorrelation(self.trials_df)
         table5 = TrivariateCorrelation(self.trials_df)
+        table6 = BoxPlotCheckBox(self.trials_df)
 
         all_elements = [
             table1,
@@ -83,6 +84,7 @@ class Visualizer:
             table3,
             table4,
             table5,
+            table6,
         ]
 
         table_divs = [html.Div([table]) for table in all_elements]
