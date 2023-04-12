@@ -7,7 +7,11 @@ from .util import *
 def scatter_lines_dropdown(trials_df):
     trials_df = normalize_df(trials_df)
     FULL_HTML = html.Div([
-        html.H1('Comparing effectiveness of trials'),
+        html.Div(style={'clear': 'both'}),
+        html.Br(), html.Br(), html.Br(),
+        html.Hr(),
+        
+        html.H1('Line-Plot Hyperparameter Reward Correlation'),
 
         html.Div([
             html.Label('Select column:'),
@@ -26,9 +30,9 @@ def scatter_lines_dropdown(trials_df):
     def update_graph(value):
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=trials_df.index, y=trials_df[value], mode='markers', name=f"{value}"))
-        fig.add_trace(go.Scatter(x=trials_df.index, y=trials_df['value'], mode='markers', name='reward', marker=dict(color='red')))
+        fig.add_trace(go.Scatter(x=trials_df.index, y=trials_df['reward'], mode='markers', name='reward', marker=dict(color='red')))
         fig.add_trace(go.Scatter(x=trials_df.index, y=trials_df[value], mode='lines', name=f'Line {value}'))
-        fig.add_trace(go.Scatter(x=trials_df.index, y=trials_df['value'], mode='lines', name='Reward Line', marker=dict(color='red')))
+        fig.add_trace(go.Scatter(x=trials_df.index, y=trials_df['reward'], mode='lines', name='Reward Line', marker=dict(color='red')))
         fig.update_layout(title=f'Comparing {value} and reward', xaxis=dict(title='Trial Number'), yaxis=dict(title=value))
         return fig
     

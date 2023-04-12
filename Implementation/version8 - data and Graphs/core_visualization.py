@@ -1,3 +1,14 @@
+import winsound
+import pyttsx3
+
+engine = pyttsx3.init()
+rate = engine.getProperty('rate')
+engine.setProperty('rate', rate-30) 
+
+def speak(text):
+    engine.say(text)
+    engine.runAndWait()
+
 from dash import Dash, html, dcc
 from DashPlotly import *
 
@@ -21,6 +32,7 @@ class Visualizer:
         self.study = self.study_loader()
 
         self.trials_df = self.study.trials_dataframe()
+        self.trials_df = self.trials_df.rename(columns={'value': 'reward'})
 
         # self.trials_df = self.preprocess_df(normalize=True)
 
@@ -61,24 +73,30 @@ class Visualizer:
     def graph_generator(self):
         table1 = StudyTable(self.trials_df)
         table2 = ScatterLine(self.trials_df)
+        table3 = ColorScaleHistogram(self.trials_df)
+        table4 = InterCorrelation(self.trials_df)
 
         all_elements = [
             table1,
             table2,
+            table3,
+            table4,
+
         ]
 
-        table_divs = [html.Div([table, html.Br(), html.Br(), html.Br(), html.Hr()]) for table in all_elements]
-        print("This actually worked omg")
+        table_divs = [html.Div([table]) for table in all_elements]
+
         app.layout = html.Div(table_divs)
 
 v = Visualizer('study-26')
 # trials_df = v.preprocess_df()
 
-
-
 app = Dash(__name__)
 
 v.graph_generator()
+
+winsound.Beep(440, 500)
+speak('Dash App Updated !')
 
 if __name__ == "__main__":
     app.run_server(debug=True, port=1026)

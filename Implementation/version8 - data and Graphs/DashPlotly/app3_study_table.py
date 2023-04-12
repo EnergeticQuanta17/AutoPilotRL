@@ -43,7 +43,7 @@ def study_table(trials_df):
     recorded_trials_df = reorder_cols_signif(recorded_trials_df)
 
     FULL_HTML = html.Div([
-        html.H1('Studied Hyperparameter Configurations'),
+        html.H1('Explored Hyperparameter Configurations'),
         
        dcc.Checklist(
             id='checklist',
