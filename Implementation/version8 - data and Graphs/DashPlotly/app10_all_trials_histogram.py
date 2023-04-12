@@ -5,6 +5,7 @@ from .util import *
 
 def color_scale_histogram(trials_df):
     trials_df = normalize_df(trials_df, normalize=False)
+    trials_df = change_column_names(trials_df)
     FULL_HTML = html.Div(children=[
         html.Div(style={'clear': 'both'}),
         html.Br(), html.Br(), html.Br(),

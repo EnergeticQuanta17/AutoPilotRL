@@ -5,10 +5,28 @@ from .util import *
 
 def correlation_hyp_vs_hyp(trials_df):
     trials_df = normalize_df(trials_df, normalize=False)
-
+    trials_df = change_column_names(trials_df)
     
     corr = trials_df.corr()
-    corr = significant_digits(corr)
+    corr = significant_digits(corr, n_digits=2)
+
+    print(type(corr))
+    print(type(trials_df))
+
+    corr = corr.applymap(float)
+
+    highest_indices = [abs(corr[col]).sort_values(ascending=False)[1:].idxmax() for col in corr]
+    style_highlight = [
+        {
+            'if': {
+                'row_index': corr.columns.get_loc(idx),
+                'column_id': col
+            },
+            'backgroundColor': 'yellow',
+            'color': 'black'
+        }
+        for col, idx in zip(corr.columns, highest_indices)
+    ]
 
     FULL_HTML = html.Div([
         html.Div(style={'clear': 'both'}),
@@ -43,7 +61,8 @@ def correlation_hyp_vs_hyp(trials_df):
         dash_table.DataTable(
             id='correlation-table',
             columns=[{"name": i, "id": i} for i in corr.columns],
-            data=corr.to_dict('records')
+            data=corr.to_dict('records'),
+            style_data_conditional=style_highlight
         )
     ])
 

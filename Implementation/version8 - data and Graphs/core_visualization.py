@@ -75,13 +75,14 @@ class Visualizer:
         table2 = ScatterLine(self.trials_df)
         table3 = ColorScaleHistogram(self.trials_df)
         table4 = InterCorrelation(self.trials_df)
+        table5 = TrivariateCorrelation(self.trials_df)
 
         all_elements = [
             table1,
             table2,
             table3,
             table4,
-
+            table5,
         ]
 
         table_divs = [html.Div([table]) for table in all_elements]

@@ -13,7 +13,9 @@ def normalize_df(df, normalize=True):
 
     return df
 
-def significant_digits(df):
+def significant_digits(df, n_digits=4):
+    if(n_digits==2):
+        return df.applymap(lambda x: f"{x:.2g}")    
     return df.applymap(lambda x: f"{x:.4g}")
 
 def change_column_names(df):

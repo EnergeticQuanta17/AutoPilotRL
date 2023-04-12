@@ -6,6 +6,7 @@ from .util import *
 
 def scatter_lines_dropdown(trials_df):
     trials_df = normalize_df(trials_df)
+    trials_df = change_column_names(trials_df)
     FULL_HTML = html.Div([
         html.Div(style={'clear': 'both'}),
         html.Br(), html.Br(), html.Br(),
