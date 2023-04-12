@@ -31,11 +31,16 @@ for i in ['datetime_start', 'datetime_complete']:
 trials_df['duration'] = trials_df['duration'].dt.total_seconds()
 
 app.layout = html.Div([
-    html.H1('Comparing effectiveness of trials'),
-    html.Label('Select column:'),
-    dcc.Dropdown(trials_df.columns.to_list(), 'value', id='dropdown-selection'),
-    dcc.Graph(id='graph-content'),
-    dash_table.DataTable(data=trials_df[[i for i in trials_df.columns.to_list()]].to_dict('records'), page_size=10, style_table={'width': 'auto'})
+    html.Div([
+        html.Label('Select column:'),
+        dcc.Dropdown(trials_df.columns.to_list(), 'value', id='dropdown-selection'),
+    ], style={'width': '20%', 'float': 'left'}),
+
+
+    html.Div([
+        dcc.Graph(id='graph-content'),
+    ], style={'width': '80%', 'float': 'right'}),
+    # dash_table.DataTable(data=trials_df[[i for i in trials_df.columns.to_list()]].to_dict('records'), page_size=10, style_table={'width': 'auto'})
 ])
 
 @callback(

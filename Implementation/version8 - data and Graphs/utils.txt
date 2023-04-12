@@ -1,0 +1,4 @@
+PRINTING THE DATATYPE OF THE COLUMNS OF DF
+for column in trials_df.columns:
+    print(f"{column}: {trials_df[column].dtype}")
+
