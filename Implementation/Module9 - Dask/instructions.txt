@@ -1,0 +1,4 @@
+1. Directly running python file not working for some reason - check reason
+2. client.dashboard_link
+    Run this and go to the url generated to analyze the workers
+3. 
