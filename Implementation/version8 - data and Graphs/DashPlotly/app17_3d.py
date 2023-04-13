@@ -35,7 +35,7 @@ def dim3_correlation(trials_df):
             html.Div([
                 dcc.Dropdown(
                     trials_df.columns.to_list(),
-                    'learning_rate',
+                    'reward',
                     id='zaxis-column17'
                 ),
             ], style={'width': '33%', 'float': 'right', 'display': 'inline-block'})

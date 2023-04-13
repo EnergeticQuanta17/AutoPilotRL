@@ -77,6 +77,8 @@ class Visualizer:
         table4 = InterCorrelation(self.trials_df)
         table5 = TrivariateCorrelation(self.trials_df)
         table6 = BoxPlotCheckBox(self.trials_df)
+        table7 = NormalDistributionFitter(self.trials_df)
+        table8 = BetaDistributionFitter(self.trials_df)
 
         all_elements = [
             table1,
@@ -85,6 +87,8 @@ class Visualizer:
             table4,
             table5,
             table6,
+            table7,
+            table8,
         ]
 
         table_divs = [html.Div([table]) for table in all_elements]
@@ -93,6 +97,7 @@ class Visualizer:
 
 v = Visualizer('study-26')
 # trials_df = v.preprocess_df()
+
 
 app = Dash(__name__)
 

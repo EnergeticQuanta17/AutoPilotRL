@@ -40,3 +40,9 @@ graph17
 
 graph
 x-axis
+
+graph19
+x-axis19
+
+graph22
+x-axis22
