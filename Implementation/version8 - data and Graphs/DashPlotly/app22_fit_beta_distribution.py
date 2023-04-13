@@ -11,6 +11,14 @@ def beta_distribution(trials_df):
     trials_df = normalize_df(trials_df, normalize=True)
     trials_df = change_column_names(trials_df)
 
+    columns = trials_df.columns.unique()
+
+    # Fit beta distribution for each column
+    beta_params = {}
+    for col in columns:
+        a, b, loc, scale = beta.fit(trials_df[col])
+        beta_params[col] = {'a': a, 'b': b, 'loc': loc, 'scale': scale}
+
     beta_params = {}
     for col in trials_df.columns.unique():
         a, b, loc, scale = beta.fit(trials_df[col])
@@ -25,13 +33,14 @@ def beta_distribution(trials_df):
         html.P('Hyperparameters to be plotted:'),
         dcc.Checklist(
             id="x-axis22",
-            options=[{'label': col, 'value': col} for col in trials_df.columns.unique()],
-            value=trials_df.columns.unique(),
+            options=[{'label': col, 'value': col} for col in columns],
+            value=columns,
             inline=True,
         ),
         dcc.Graph(id="graph22"),
     ])
 
+    # Define the callback function
     @callback(
         Output("graph22", "figure"),
         Input("x-axis22", "value"),
@@ -45,7 +54,8 @@ def beta_distribution(trials_df):
             scale = beta_params[col]['scale']
             x_range = np.linspace(beta.ppf(0.001, a, b, loc=loc, scale=scale), beta.ppf(0.999, a, b, loc=loc, scale=scale), num=100)
             y_vals = beta.pdf(x_range, a, b, loc=loc, scale=scale)
-            trace = go.Scatter(x=x_range, y=y_vals, name=col, opacity=0.7)
+            y_vals_norm = y_vals / (beta.cdf(1, a, b, loc=loc, scale=scale) - beta.cdf(0, a, b, loc=loc, scale=scale))
+            trace = go.Scatter(x=x_range, y=y_vals_norm, name=col, opacity=0.7)
             data.append(trace)
 
         layout = go.Layout(
