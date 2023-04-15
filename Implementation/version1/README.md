@@ -9,6 +9,14 @@ An implementation of a custom reinforcement learning agent built using the OpenA
 ### Running ins.py
 Run the "ins.py" file to load, train and test the RL Agent with default hyperparameters.
 
+```
+python ins.py
+```
+
+This will automatically load the environment, set the hyperparameters for the agent, train the agent for 10 iterations with model saving every 100 timesteps, and test the agent's performance by running 5 episodes with the trained model.
+
+_Note_: You can modify the hyperparameters in the "ins.py" file before running it, to customize the training and testing process for the agent.
+
 ## Detailed Usage
 
 ### RLAgent Class
