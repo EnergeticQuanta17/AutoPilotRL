@@ -2,9 +2,24 @@ from random import sample
 from PyQt5.QtCore import QTimer
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QComboBox, QPushButton, QLineEdit
-from MegaDHyperPilotRL import *
+from RLAgentBuilder import *
 
-global loading_pressed
+global is_training
+is_training = False
+
+global m
+global timesteps
+global iterations
+
+m = RLAgent(False)
+timesteps = 100
+iterations = 2
+
+import pyttsx3
+def speak(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
 
 class MyApp(QWidget):
 
@@ -139,7 +154,7 @@ class MyApp(QWidget):
 
     def loader(self):
         self.reset_load_dropdowns()
-        self.m = MegaD26(False)
+        self.m = RLAgent(False)
         self.m.third_init()
         loading_pressed = False
         for i in os.listdir("model"):
@@ -194,14 +209,23 @@ class MyApp(QWidget):
         print('Environment selected:', self.environment)
         print('Policy selected:', self.policy)
 
-        self.m = MegaD26(False)
-        self.m.third_init()
-        self.m.second_init(self.environment, self.algorithm, self.policy)
-        self.m.learn_and_save(int(self.timestep_textbox.text()), int(self.iterations_textbox.text()))
+        
+        m.third_init()
+        m.second_init(self.environment, self.algorithm, self.policy)
+
+        global timesteps
+        global iterations
+        global is_training
+        timesteps = int(self.timestep_textbox.text())
+        iterations = int(self.iterations_textbox.text())
+        is_training = True
+        
+        QApplication.closeAllWindows()
+        
         #m.load()
 
     def reset_gui(self):
-        m = MegaD26(False)
+        m = RLAgent(False)
         m.third_init()
         # Reset values of GUI elements
         self.algorithm_dropdown.setCurrentIndex(0)
@@ -221,8 +245,27 @@ class MyApp(QWidget):
         self.textbox.setDisabled(False)
         self.policy_dropdown.setDisabled(False)
 
+import pyttsx3
+def speak(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = MyApp()
-    sys.exit(app.exec_())
+    app.exec_()
 
+    if(is_training):
+        speak("Trainig of the model will commence")
+
+        print(f"Using {timesteps} timsteps and {iterations} iterations")
+        m.learn_and_save(timesteps, iterations)
+
+        speak("Training of the Agent completed!")
+        speak("Launching GUI Again")
+        
+        is_training = False
+
+        ex = MyApp()
+        app.exec_()

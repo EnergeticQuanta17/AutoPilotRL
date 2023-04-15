@@ -2,7 +2,7 @@ from random import sample
 from PyQt5.QtCore import QTimer
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QComboBox, QPushButton, QLineEdit
-from MegaDHyperPilotRL import *
+from RLAgentBuilder import *
 
 global loading_pressed
 
@@ -146,7 +146,7 @@ class MyApp(QWidget):
 
     def loader(self):
         print("before   ")
-        self.m = MegaD26(False)
+        self.m = RLAgent(False)
         self.m.third_init()
         print("after")
         loading_pressed = False
@@ -196,14 +196,14 @@ class MyApp(QWidget):
         print('Environment selected:', self.environment)
         print('Policy selected:', self.policy)
 
-        self.m = MegaD26(False)
+        self.m = RLAgent(False)
         self.m.third_init()
         self.m.second_init(self.environment, self.algorithm, self.policy)
         self.m.learn_and_save(int(self.timestep_textbox.text()), int(self.iterations_textbox.text()))
         #m.load()
 
     def reset_gui(self):
-        m = MegaD26(False)
+        m = RLAgent(False)
         m.third_init()
         # Reset values of GUI elements
         self.algorithm_dropdown.setCurrentIndex(0)

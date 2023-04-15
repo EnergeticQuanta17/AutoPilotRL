@@ -8,39 +8,6 @@ import time
 import datetime
 import random
 
-#import PPO_HypConfig
-
-## make dictionary to send to PPO(...) --- to dots
-## parameterize everything
-## parallelize load and save
-## estimate the amount of time requrired given the time_steps_done , to wait in load method
-## setup initial json file
-## automatically choose which zip file to open in load()
-# default parameter values are not working properly -- mayve use none and assign default in init
-## add checks if new value of algorithm matches available
-## check if folder exists in load()
-## Now I am abruptly exit() ing if wrong name entered, change this
-## handle exceptions using class
-## think of way to reset counter for different algorithms
-## alarm/ sound when each iteration is finished
-## why are trainging_iteraions are irregular in that box output
-## in readthedocs, there are tick mark box like which will work for continuous, discrete --> action, observation --> Implement this cleanly, also there are algorithms which are multi-processable and others are not
-## Even if it didnt work its creating file, take care of that
-## (Continuous)Action space problem for Off-Policy algorithms, how to generically define continuous space for any environment
-            # supported_action_spaces=(
-            #     spaces.Box,
-            #     spaces.Discrete,
-            #     spaces.MultiDiscrete,
-            #     spaces.MultiBinary,
-            # ),
-
-## Policies are algorithm dependent ah? - Unable to get all possible policies
-## random.sample --> not handled the case where user can put less than 1 or above 10
-## inform when the model training is over - i.e count the number of files in that folder ----> wait a minute, when the training is over we can inform --> this gives clue that if a process is waiting for any other process, just copy the 2nd code to end of 1st code
-##
-##
-##
-
 available_algorithms = ["A2C",
                         "DDPG",
                         "DQN",
@@ -64,7 +31,7 @@ except:
     with open("previous_request.json", "w") as f:
         json.dump(main, f)
 
-class MegaD26:
+class RLAgent:
     def __init__(self, initialize=True):
         if(not initialize):
             return
@@ -130,7 +97,7 @@ class MegaD26:
         #     raise Exception("{self.policies} does not exist in the list of available policies: {available_algorithms}")
 
         self.env = gym.make(self.env_name)
-        # self.env = gym.make(self.env_name, render_mode='human')
+        # self.env = gym.make(self.env_name)
         # self.env = Monitor(self.env, './video', force=True)
         self.env.reset()
     
@@ -160,23 +127,23 @@ class MegaD26:
         if(not os.path.exists(logdir)):
             os.makedirs(logdir)
 
-    def create_model_given_algorithm(self, algo, policy, env, v, tbl, n_steps):
+    def create_model_given_algorithm(self, algo, policy, env, v, tbl):
         print(algo)
         if(algo == "PPO"):
-            return PPO(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
+            return PPO(policy, env, verbose=v, tensorboard_log=tbl)
         elif(algo == "A2C"):
-            return A2C(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
+            return A2C(policy, env, verbose=v, tensorboard_log=tbl)
         elif(algo == "DQN"):
-            return DQN(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
+            return DQN(policy, env, verbose=v, tensorboard_log=tbl)
         elif(algo == "DDPG"):
             env.action_space = gym.spaces.Box(low=-2.0, high=2.0, shape=(1,))
-            return DDPG(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
+            return DDPG(policy, env, verbose=v, tensorboard_log=tbl)
         elif(algo == "SAC"):
             env.action_space = gym.spaces.Box(low=-2.0, high=2.0, shape=(1,))
-            return SAC(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
+            return SAC(policy, env, verbose=v, tensorboard_log=tbl)
         elif(algo == "TD3"):
             env.action_space = gym.spaces.Box(low=-2.0, high=2.0, shape=(1,))
-            return TD3(policy, env, verbose=v, tensorboard_log=tbl, n_steps=n_steps)
+            return TD3(policy, env, verbose=v, tensorboard_log=tbl)
     
     def create_model_from_PPO_hyperparameters(self, hyperparameters):
         return PPO(**hyperparameters)
@@ -189,7 +156,7 @@ class MegaD26:
         self.make_directories(model_dir, logdir)
 
         print(self.algorithm)
-        model = self.create_model_given_algorithm(algo=self.algorithm, policy=self.policy, env=self.env, v=1, tbl=logdir+"//", n_steps=10)
+        model = self.create_model_given_algorithm(algo=self.algorithm, policy=self.policy, env=self.env, v=1, tbl=logdir+"//")
         
         # hyps = PPO_HypConfig.request_next_HypConfig()
         # model = self.create_model_from_PPO_hyperparameters(hyps)
@@ -237,7 +204,7 @@ class MegaD26:
             model = PPO.load(model_dir[:-4], env=self.env)
 
         if(coming_from_pyqt):
-            env = gym.make(self.env_name, render_mode='human')
+            env = gym.make(self.env_name)
             for ep in range(no_of_episodes):
                 obs = env.reset()
                 done = False
@@ -248,7 +215,7 @@ class MegaD26:
             time.sleep(2)
             env.close()
         else:
-            self.env = gym.make(self.env_name, render_mode='human')
+            self.env = gym.make(self.env_name)
             for ep in range(no_of_episodes):
                 obs = self.env.reset()
                 done = False
