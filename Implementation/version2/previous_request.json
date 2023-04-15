@@ -1,1 +1,0 @@
-{"env": "CartPole-v0", "algo": "A2C", "policy": "MlpPolicy", "counter": 8}
