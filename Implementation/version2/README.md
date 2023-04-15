@@ -1,6 +1,6 @@
 # PyQt5 GUI for Selecting RL Algorithms and Environments - Training
 
-This project streamlines the selection of RL algorithms and environments with a PyQt5-based graphical user interface (GUI) that makes the process more accessible and user-friendly.
+This release streamlines the selection of RL algorithms and environments for Training with a PyQt5-based graphical user interface (GUI) that makes the process more accessible and user-friendly.
 
 ## Usage
 

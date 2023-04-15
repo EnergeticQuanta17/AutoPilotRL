@@ -4,32 +4,17 @@ import pandas as pd
 from .util import *
 
 def return_table_according_to_dataframe(df):
+    print(df)
     table = dash_table.DataTable(data=df[[i for i in df.columns.to_list()]].to_dict('records'), 
-    page_size=10, 
-    style_table={'width': '100%', 'margin-top': '20px', 'margin-bottom': '20px'},
+    page_size=10,
     sort_action='native',
-    style_header={
-        'backgroundColor': 'rgb(230, 230, 230)',
-        'fontWeight': 'bold',
-        'textAlign': 'center',
-        
-        'whiteSpace': 'normal', 'height': 'auto',
-    },
-    style_cell={
-        'padding': '10px',
-        'textAlign': 'center',
-        'minWidth': '0px',
-        'width': 'auto',
-        'maxWidth': '150px',
-        'whiteSpace': 'normal',
-        'overflow': 'hidden',
-        'textOverflow': 'ellipsis',
-    },
+    style_mode='multi',
     )
 
     return table
 
-def study_table(trials_df): 
+def study_table(trials_df):
+    print(trials_df)
     recorded_trials_df = trials_df
 
     trials_df = normalize_df(trials_df)    

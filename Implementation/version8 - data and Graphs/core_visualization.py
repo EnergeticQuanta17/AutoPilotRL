@@ -46,9 +46,9 @@ class Visualizer:
         url = "https://raw.githubusercontent.com/SBhat2615/AutoPilotRL/main/Implementation/version8%20-%20data%20and%20Graphs/study-26.db"
         storage_name = f"sqlite:///{self.study_name}.db"
 
-        with urllib.request.urlopen(url) as response:
-            with open(self.study_name + ".db", 'wb') as f:
-                f.write(response.read())
+        # with urllib.request.urlopen(url) as response:
+        #     with open(self.study_name + ".db", 'wb') as f:
+        #         f.write(response.read())
 
         study = optuna.load_study(
             study_name=self.study_name,

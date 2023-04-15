@@ -25,7 +25,7 @@ def change_column_names(df):
 
 def reorder_cols_signif(df):
     desired_order = ['number',
-                    'value',
+                    'reward',
                     'duration',
                     'learning_rate',
                     'gamma',
