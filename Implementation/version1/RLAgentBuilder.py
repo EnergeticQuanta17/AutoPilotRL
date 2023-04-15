@@ -6,23 +6,11 @@ from stable_baselines3 import PPO
 import time
 import datetime
 
-## Use previous values unless otherwise requested to change
-## make dictionary to send to PPO(...) --- to dots
-## parameterize everything
-## parallelize load and save
-## estimate the amount of time requrired given the time_steps_done , to wait in load method
-## setup initial json file
-## automatically choose which zip file to open in load()
-## include dt in file name
-# default parameter values are not working properly -- mayve use none and assign default in init
-## add checks if new value of algorithm matches available
-## check if folder exists in load()
-
 try:
     open('previous_request.json', 'r')
 except:
     main = {
-        "env" : "CartPole-v1",
+        "env" : "BipedalWalker-v3",
         "algo" : "PPO",
         "policy" : "MlpPolicy",
         "counter" : 0,
@@ -30,7 +18,7 @@ except:
     with open("previous_request.json", "w") as f:
         json.dump(main, f)
 
-class MegaD26:
+class RLAgent:
     def __init__(self):
         with open("previous_request.json", "r") as f:
             data = json.loads(f.read())
@@ -98,7 +86,7 @@ class MegaD26:
         for i in range(1, iterations+1):
             print("------------------------------------------------------------")
             model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name=str(self.counter))
-            model.save(model_dir+f"/{TIMESTEPS*i}_{dt}")
+            model.save(model_dir+f"/{TIMESTEPS*i}")
         
 
     def load(self, no_of_episodes=5):
@@ -106,10 +94,10 @@ class MegaD26:
         model_dir = f"model/{self.env_name}/{self.algorithm}"
         print(os.listdir(model_dir))
         print(model_dir)
-        model_no = input("Enter execution number: ")
+        model_no = input("Choose the execution number from the above list: ")
         all_files = os.listdir(f"{model_dir}/{model_no}")
         print(all_files)
-        training_till = input("Select the model: ")+"_"
+        training_till = input("Select model number: ")
         
         try:
             index = all_files.index(next(s for s in all_files if training_till in s))

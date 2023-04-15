@@ -1,7 +1,11 @@
-from MegaDHyperPilotRL import *
+from RLAgentBuilder import RLAgent
 
-m = MegaD26()
+# Create an instance of RLAgent
+agent = RLAgent()
 
-m.learn_and_save(timestep=100, iterations=10)  ## Create a model after every 100 timsteps, for 10 times
+# Train the agent for 10 iterations, saving the model 10 times
+# The model is saved every 100 timesteps during each iteration
+agent.learn_and_save(timestep=100, iterations=1)
 
-m.load(no_of_episodes=5)
+# Load the gym environment and render the output for 5 episodes
+agent.load(no_of_episodes=5)
