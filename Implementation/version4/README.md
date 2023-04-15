@@ -19,7 +19,7 @@ Result of each study is printed in the terminal.
 <br>
 The study is also stored in the local database.
 
-
+<hr>
 
 ## Code Structure
 
