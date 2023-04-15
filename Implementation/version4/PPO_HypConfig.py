@@ -445,9 +445,6 @@ def request_next_HypConfig(env, tb_logs):
     return hyps
 
 
-
-
-
 #####################################################################
 ##            MEGA HANDLER (handler of all classes below)          ##
 #####################################################################

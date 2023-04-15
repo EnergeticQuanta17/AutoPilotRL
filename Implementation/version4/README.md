@@ -2,9 +2,29 @@
 
 ## Usage
 
+### Run the OptunaHypTuning.py file
+* Customize the following :-
+ * Environment Name
+ * RL Algorithm
+ * Timesteps
+ * Iterations
+ * Execution Number
+ * Number of episodes
+ * Number of optuna trials
+* Run the file.
+    ```python OptunaHypTuner.py```
+* Result of each study is printed in the terminal.
+* The study is also stored in the local database.
+
 
 
 ## Code Structure
+
+### OptunaHypTuning.py
+> ```objective``` - The objective function being optimized by Optuna.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Training <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Simulating and obtaining average reward<br><br>
+> ```__name__=="__main__"``` - Create a new study and optimize the **objective** function
 
 ### Trainer.py
 
@@ -128,3 +148,5 @@ MUST CONTAIN UPPER AND LOWER BOUND OF THE HYPERPARAMETER UNDER STUDY - DO THIS F
 > #### HypRequestHandler
 > * ``` __init__``` - This class is used to return the bundled set of Hyperparameter Configuration chosen by the Sampler
 > * ```optuna_next_sample``` - Return the set of Hyperparameters suggested by Optuna
+
+
