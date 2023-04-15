@@ -3,7 +3,7 @@
 ## Usage
 
 ### Run the OptunaHypTuning.py file
-* Customize the following :-
+Customize the following :-
  * Environment Name
  * RL Algorithm
  * Timesteps
@@ -11,10 +11,10 @@
  * Execution Number
  * Number of episodes
  * Number of optuna trials
-* Run the file.
+Run the file.
     ```python OptunaHypTuner.py```
-* Result of each study is printed in the terminal.
-* The study is also stored in the local database.
+Result of each study is printed in the terminal.
+The study is also stored in the local database.
 
 
 
