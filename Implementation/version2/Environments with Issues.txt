@@ -1,3 +1,0 @@
-All the environments which are working, will be in the .\model folder
-
-See the envs_with_errors for Automated Output
