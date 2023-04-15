@@ -11,9 +11,12 @@ Customize the following :-
  * Execution Number
  * Number of episodes
  * Number of optuna trials
+<br>
 Run the file.
     ```python OptunaHypTuner.py```
+<br>
 Result of each study is printed in the terminal.
+<br>
 The study is also stored in the local database.
 
 
