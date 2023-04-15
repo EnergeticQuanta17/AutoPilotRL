@@ -5,7 +5,7 @@ import gym
 
 
 
-class MegaLoader:
+class RLAgentLoader:
     def __init__(self, env_name, algo):
         self.env_name = env_name
         self.env = gym.make(self.env_name)
@@ -40,7 +40,7 @@ class MegaLoader:
         return_per_episode = []
         info_per_episode = []
 
-        all_models_dir = f"../model/{self.env_name}/{self.algorithm}/{execution_number}"
+        all_models_dir = f"model/{self.env_name}/{self.algorithm}/{execution_number}"
 
         model_no = self.model_selector(all_models_dir)
         model_dir = f"{all_models_dir}/{model_no}"

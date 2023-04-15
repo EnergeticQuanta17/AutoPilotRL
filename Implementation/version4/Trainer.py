@@ -4,8 +4,6 @@ import gym
 import json
 from stable_baselines3 import PPO
 
-
-
 def check_json_exists(filename):
     try:
         open(filename, 'r')
@@ -21,7 +19,7 @@ def check_json_exists(filename):
 
 check_json_exists("previous_request.json")
 
-class MegaTrainer:
+class RLAgentTrainer:
     def __init__(self, env_name, algo):
         with open("previous_request.json", "r") as f:
             self.data = json.loads(f.read())
@@ -59,8 +57,5 @@ class MegaTrainer:
 
 
 
-
-
-
 if(__name__=="__main__"):
-    load_from_json("previous_request.json")
+    check_json_exists("previous_request.json")
