@@ -1,0 +1,11 @@
+Prior over the objective function
++
+Evidence (Previous data)
+=
+Posterior function
+
+
+Utility-based selection of the next observation
+
+Prior belief about the problem to help direct the sampling and tradeoff EvE
+
