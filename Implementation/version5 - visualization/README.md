@@ -12,7 +12,6 @@
  * Execution Number
  * Number of episodes
  * Number of optuna trials
-<br>
 
 ##### Choose the plots to display :-
 * Optimization History
