@@ -1,5 +1,16 @@
+import optuna
+import os
+import sys
+import logging
+from time import sleep
+import plotly.offline as pyo
+
+from Trainer import *
+from Loader import *
+from PPO_HypConfig import *
+
 class OptunaTuner:
-    def __init__(self, env_name, algo, directory, optimizer, ts, iterations, n_trials, counter):
+    def __init__(self, env_name, algo, directory, optimizer, ts, iterations, n_trials, counter, req_plots):
         self.env_name = env_name
         self.algorithm = algo
         self.directory = directory
@@ -8,6 +19,7 @@ class OptunaTuner:
         self.iterations = iterations
         self.n_trials = n_trials
         self.exe_number = counter
+        self.plots = req_plots
 
     def create_study_db(self):
         optuna.logging.get_logger("optuna").addHandler(logging.StreamHandler(sys.stdout))
@@ -92,39 +104,59 @@ class OptunaTuner:
         counter = m.learn(
             self.timestep,
             self.iterations,
-            MegaHandler().request_next_HypConfig(trial, m.env, f"logs/{self.directory}"),
+            HypRequestHandler().optuna_next_sample(trial, m.env, f"logs/{self.directory}"),
             self.directory,
             trial=trial
         )
 
-        m_load  = MegaLoader(self.env_name, self.algorithm, self.directory)
+        m_load  = RLAgentLoader(self.env_name, self.algorithm, self.directory)
         return m_load.load(counter, self.n_trials)["total_return"]
 
     def visul(self):
+        index = -1
         study = self.study_loader()
-        if(not "_optimization_history.py"):
+
+        index += 1
+        if(self.plots[index][1]):
             pyo.plot(optuna.visualization.plot_optimization_history(study))
+            sleep(0.5)
         
-        if(not "_timeline.py"):
+        index += 1
+        if(self.plots[index][1]):
             pyo.plot(optuna.visualization.plot_timeline(study))
+            sleep(0.5)
         
-        if(not "_slice.py"):
+        index += 1
+        if(self.plots[index][1]):
             pyo.plot(optuna.visualization.plot_slice(study))
+            sleep(0.5)
         
-        if(not "_pareto_front.py"): ## this is used for multi-objective study
+        index += 1
+        if(self.plots[index][1]):
             pyo.plot(optuna.visualization.plot_pareto_front(study))
+            sleep(0.5)
         
-        if("_param_importances.py"):
+        index += 1
+        if(self.plots[index][1]):
             pyo.plot(optuna.visualization.plot_param_importances(study))
+            sleep(0.5)
         
-        if(not "_parallel_coordinate.py"):
+        index += 1
+        if(self.plots[index][1]):
             pyo.plot(optuna.visualization.plot_parallel_coordinate(study))
+            sleep(0.5)
             
-        if(not "_intermediate_values.py"):
+        index += 1
+        if(self.plots[index][1]):
             pyo.plot(optuna.visualization.plot_intermediate_values(study))
+            sleep(0.5)
         
-        if(not "_edf.py"):
+        index += 1
+        if(self.plots[index][1]):
             pyo.plot(optuna.visualization.plot_edf(study))
+            sleep(0.5)
             
-        if(not "_contour.py"):
+        index += 1
+        if(self.plots[index][1]):
             pyo.plot(optuna.visualization.plot_contour(study))
+            sleep(0.5)

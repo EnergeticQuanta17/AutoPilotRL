@@ -455,11 +455,11 @@ def request_next_HypConfig(env, tb_logs):
 #####################################################################
 ##            MEGA HANDLER (handler of all classes below)          ##
 #####################################################################
-class MegaHandler:
+class HypRequestHandler:
     def __init__(slef):
         pass
 
-    def request_next_HypConfig(self, trial, env, tb_logs):
+    def optuna_next_sample(self, trial, env, tb_logs):
         hyps = dict()
 
         hyps["policy"] = PolicySelector().opt(trial)

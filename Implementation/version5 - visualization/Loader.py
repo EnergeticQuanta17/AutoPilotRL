@@ -5,7 +5,7 @@ import gym
 
 
 
-class MegaLoader:
+class RLAgentLoader:
     def __init__(self, env_name, algo, directory):
         self.env_name = env_name
         self.env = gym.make(self.env_name)
