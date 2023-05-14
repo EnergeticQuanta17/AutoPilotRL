@@ -309,7 +309,7 @@ if(__name__=="__main__"):
         timesteps=1000,
         iterations=200,
         n_trials=100,
-        counter=6006100500,
+        counter=6006100200,
         sampler="RandomSampler",
         pruner="HyperbandPruner"
     )
