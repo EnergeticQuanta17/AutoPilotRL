@@ -1,0 +1,28 @@
+Numbers are in terms of "trial_id"
+
+-------------------------------
+1234567 --> 10000 n_trials
+		10 iterations
+		Random Sampler
+
+	Prithya --> 1 to 323
+	Preetham --> 1 to 623
+--------------------------------
+______________________________________________________________________________________________________________________________________
+
+100100 ----> 100 n_trials
+		 100 iterations
+             Random Sampler
+	
+	Prithya --> 1 to 31
+	Preetham --> Running on B - Blue
+	
+	alias --> 100100100100
+		Prithya --> running if submitted before losing internet
+
+==============
+TPE Sampler - 6006
+==============
+6006100100
+	Prithya B
+		100 100 --> 
