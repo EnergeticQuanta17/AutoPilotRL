@@ -308,7 +308,7 @@ if(__name__=="__main__"):
         optimizer="optuna",
         timesteps=1000,
         iterations=10,
-        n_trials=10000,
+        n_trials=2,
         counter=1405,
         sampler="RandomSampler",
         pruner="HyperbandPruner"
