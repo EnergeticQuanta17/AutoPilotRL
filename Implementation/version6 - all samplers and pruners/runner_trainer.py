@@ -274,56 +274,56 @@ class HyperPilotRL:
             return self.o.return_study()
 
 if(__name__=="__main__"):
-    data = {}
-    with open("previous_request.json", "r") as f:
-        data = json.loads(f.read())
+#     data = {}
+#     with open("previous_request.json", "r") as f:
+#         data = json.loads(f.read())
         
-        for i, j in data.items():
-            if(i!="env_name" and i in domain):
-                print(f"{i}\n    {domain[i]}")
-            while(True):
-                inp = input(f"Current value of {i} is {j}. Change/Pass? ")
-                if(inp==""):
-                    break
+#         for i, j in data.items():
+#             if(i!="env_name" and i in domain):
+#                 print(f"{i}\n    {domain[i]}")
+#             while(True):
+#                 inp = input(f"Current value of {i} is {j}. Change/Pass? ")
+#                 if(inp==""):
+#                     break
 
-                if(i in domain):
-                    if(inp!="" and inp in domain[i]):
-                        data[i] = inp
-                        break
-                else:
-                    data[i] = int(inp)
-                    break
+#                 if(i in domain):
+#                     if(inp!="" and inp in domain[i]):
+#                         data[i] = inp
+#                         break
+#                 else:
+#                     data[i] = int(inp)
+#                     break
     
-        data["counter"] += 1
+#         data["counter"] += 1
 
-        print(data)
+#         print(data)
 
-        with open("previous_request.json", "w") as f:
-            json.dump(data, f)
+#         with open("previous_request.json", "w") as f:
+#             json.dump(data, f)
 
-    # h = HyperPilotRL(
-    #     env_name="CartPole-v1",
-    #     algo="PPO",
-    #     optimizer="optuna",
-    #     timesteps=1000,
-    #     iterations=10,
-    #     n_trials=2,
-    #     counter=1030,
-    #     sampler="RandomSampler",
-    #     pruner="HyperbandPruner"
-    # )
+    h = HyperPilotRL(
+        env_name="CartPole-v1",
+        algo="PPO",
+        optimizer="optuna",
+        timesteps=1000,
+        iterations=10,
+        n_trials=5,
+        counter=1405,
+        sampler="RandomSampler",
+        pruner="HyperbandPruner"
+    )
 
     start = time.time()
-    h = HyperPilotRL(
-        **data
-    )
+#     h = HyperPilotRL(
+#         **data
+#     )
     h.hyp_search()
 
     print("--------------------------------")
     print(time.time() - start)
     print("--------------------------------")
 
-    h.summary()
-    h.visualization()
-    h.get_study_data()
+#     h.summary()
+#     h.visualization()
+#     h.get_study_data()
     
