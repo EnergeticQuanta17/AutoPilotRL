@@ -5,8 +5,8 @@ Numbers are in terms of "trial_id"
 		10 iterations
 		Random Sampler
 
-	Prithya --> 1 to 323
-	Preetham --> 1 to 623
+	Prithya --> 1 to 323 --> stored in py/"study-1234567"
+	Preetham --> 1 to 623 --> stored in pr/"study-1234567"
 --------------------------------
 ______________________________________________________________________________________________________________________________________
 
@@ -14,15 +14,21 @@ ________________________________________________________________________________
 		 100 iterations
              Random Sampler
 	
-	Prithya --> 1 to 31
-	Preetham --> Running on B - Blue
-	
-	alias --> 100100100100
-		Prithya --> running if submitted before losing internet
+	Prithya --> 1 to 31 --> stored in py/"study-100100"
+	Preetham --> B - Blue --> stored in pr/"study-100100" of my folders
+
+______________________________________________________________________________________________________________________________________
 
 ==============
 TPE Sampler - 6006
 ==============
 6006100100
 	Prithya B
-		100 100 --> 
+		100 100 -->
+	
+	Prithya A
+		100 100 -->
+
+6006100500
+	Preetham A
+		100 500 -->
