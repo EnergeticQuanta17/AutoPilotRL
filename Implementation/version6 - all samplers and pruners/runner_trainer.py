@@ -192,7 +192,7 @@ class OptunaTuner:
         )
 
         m_load  = MegaLoader(self.env_name, self.algorithm, self.directory)
-        return m_load.load(counter, self.n_trials)["total_return"]
+        return m_load.load(counter, 5)["total_return"]
 
     def visul(self):
         study = self.study_loader()
