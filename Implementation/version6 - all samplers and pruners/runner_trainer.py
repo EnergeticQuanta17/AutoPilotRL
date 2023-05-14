@@ -65,11 +65,12 @@ class OptunaTuner:
         optuna.logging.get_logger("optuna").addHandler(logging.StreamHandler(sys.stdout))
         study_name = f"study-{self.exe_number}"  # Unique identifier of the study.
         
-        storage_dir = f"logs/{self.directory}"
-        if(not os.path.exists(storage_dir)):
-            os.makedirs(storage_dir)
-        storage_name = f"sqlite:///{storage_dir}/{study_name}.db"
+        directory = '/content/drive/MyDrive/Colab_Notebooks/optuna'
 
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        storage_dir = f'sqlite:///{directory}/{study_name}.db'
         return study_name, storage_name
     
     def select_pruner(self):
