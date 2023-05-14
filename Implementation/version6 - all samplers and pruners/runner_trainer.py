@@ -71,7 +71,7 @@ class OptunaTuner:
             os.makedirs(directory)
 
         storage_dir = f'sqlite:///{directory}/{study_name}.db'
-        return study_name, storage_name
+        return study_name, storage_dir
     
     def select_pruner(self):
         if(self.pruner is None):
