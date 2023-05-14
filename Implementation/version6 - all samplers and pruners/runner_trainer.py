@@ -307,9 +307,9 @@ if(__name__=="__main__"):
         algo="PPO",
         optimizer="optuna",
         timesteps=1000,
-        iterations=10,
-        n_trials=10000,
-        counter=1234567,
+        iterations=100,
+        n_trials=100,
+        counter=100100,
         sampler="RandomSampler",
         pruner="HyperbandPruner"
     )
